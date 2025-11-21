@@ -382,33 +382,92 @@ const Dashboard = () => {
             </div>
 
             <div className="dashboard-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginTop: 0 }}>
-                {/* Social Media Progress Chart */}
+                {/* Social Media Progress Chart - Custom Implementation */}
                 <div className="card" style={{ padding: '1.5rem' }}>
                     <h3 style={{ fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: 600 }}>Social Media Progress</h3>
-                    <div style={{ height: '300px' }}>
-                        <Bar
-                            data={platformProgressData}
-                            options={{
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                plugins: { legend: { display: false } },
-                                scales: {
-                                    y: {
-                                        beginAtZero: true,
-                                        grid: { color: '#f1f5f9', borderDash: [4, 4] },
-                                        ticks: { font: { family: "'Outfit', sans-serif", size: 10 }, color: '#64748b' },
-                                        border: { display: false }
-                                    },
-                                    x: {
-                                        grid: { display: false },
-                                        ticks: { font: { family: "'Outfit', sans-serif", size: 11, weight: 600 }, color: '#1e293b' },
-                                        border: { display: false }
-                                    }
-                                },
-                                barThickness: 40,
-                                borderRadius: 4
-                            }}
-                        />
+                    <div style={{ height: '300px', display: 'flex', alignItems: 'stretch' }}>
+                        {/* Y-Axis Labels */}
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            paddingRight: '1rem',
+                            paddingBottom: '60px', // Space for x-axis labels
+                            color: '#64748b',
+                            fontSize: '0.75rem',
+                            fontWeight: 500
+                        }}>
+                            {[100, 80, 60, 40, 20, 0].map(val => (
+                                <span key={val}>{val}</span>
+                            ))}
+                        </div>
+
+                        {/* Chart Area */}
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                            {/* Bars Container */}
+                            <div style={{
+                                flex: 1,
+                                display: 'flex',
+                                alignItems: 'flex-end',
+                                justifyContent: 'space-around',
+                                borderBottom: '1px solid rgba(255,255,255,0.1)',
+                                position: 'relative'
+                            }}>
+                                {/* Grid Lines */}
+                                {[0, 20, 40, 60, 80, 100].map((val, i) => (
+                                    <div key={val} style={{
+                                        position: 'absolute',
+                                        bottom: `${val}%`,
+                                        left: 0,
+                                        right: 0,
+                                        borderTop: val === 0 ? 'none' : '1px dashed rgba(226, 232, 240, 0.4)',
+                                        zIndex: 0
+                                    }} />
+                                ))}
+
+                                {platformProgressData.datasets[0].data.map((value, index) => (
+                                    <div key={index} style={{
+                                        width: '40px',
+                                        height: `${value}%`,
+                                        backgroundColor: platformProgressData.datasets[0].backgroundColor[index],
+                                        borderRadius: '8px 8px 0 0',
+                                        zIndex: 1,
+                                        transition: 'height 1s ease-out',
+                                        position: 'relative'
+                                    }}>
+                                        {/* Tooltip on hover could go here */}
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* X-Axis Labels (Logos + Names) */}
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: '1rem' }}>
+                                {platformProgressData.labels.map((label, index) => {
+                                    const logoMap = {
+                                        'WhatsApp': 'https://img.freepik.com/premium-vector/whatsapp-vector-logo-icon-logotype-vector-social-media_901408-406.jpg?semt=ais_hybrid&w=740&q=80',
+                                        'LinkedIn': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-0ggeQFzIc6YMAGOxNE6pn9QUpb4vW8HQA&s',
+                                        'TikTok': 'https://icon2.cleanpng.com/20200922/xqh/transparent-social-media-1713858561643.webp'
+                                    };
+                                    return (
+                                        <div key={index} style={{ width: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                                            <div style={{
+                                                width: '24px',
+                                                height: '24px',
+                                                borderRadius: '6px',
+                                                overflow: 'hidden',
+                                                background: 'transparent',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}>
+                                                <img src={logoMap[label]} alt={label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                                            </div>
+                                            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-main)' }}>{label}</span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -420,7 +479,7 @@ const Dashboard = () => {
                             { name: 'WhatsApp', value: '2,345', icon: 'https://img.freepik.com/premium-vector/whatsapp-vector-logo-icon-logotype-vector-social-media_901408-406.jpg?semt=ais_hybrid&w=740&q=80', color: '#25D366' },
                             { name: 'LinkedIn', value: '1,876', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-0ggeQFzIc6YMAGOxNE6pn9QUpb4vW8HQA&s', color: '#0077B5' },
                             { name: 'TikTok', value: '3,421', icon: 'https://icon2.cleanpng.com/20200922/xqh/transparent-social-media-1713858561643.webp', color: '#000000' },
-                            { name: 'Instagram', value: '4,567', icon: 'https://i.pinimg.com/736x/5c/ae/71/5cae71db70b9ec562c434d8ba79bcecb.jpg', color: '#E1306C' }
+                            { name: 'Instagram', value: '4,567', icon: 'https://toppng.com/uploads/preview/logo-instagram-116587966427mvdfvahmo.png', color: '#E1306C' }
                         ].map((platform) => (
                             <div key={platform.name} style={{
                                 display: 'flex',
