@@ -175,8 +175,8 @@ const optionsBar = {
 };
 
 const StatCard = ({ title, value, change, icon: Icon, color }) => (
-    <div 
-        className="stat-card-premium" 
+    <div
+        className="stat-card-premium"
         style={{
             display: 'flex',
             alignItems: 'center',
@@ -184,103 +184,49 @@ const StatCard = ({ title, value, change, icon: Icon, color }) => (
             padding: '2rem 1.75rem',
             position: 'relative',
             overflow: 'hidden',
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            background: 'transparent',
+            backdropFilter: 'none',
+            WebkitBackdropFilter: 'none',
             borderRadius: '20px',
-            border: '1px solid rgba(255, 255, 255, 0.4)',
-            boxShadow: `
-                0 8px 32px rgba(0, 0, 0, 0.06),
-                0 2px 8px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.02)
-            `,
+            border: 'none',
+            boxShadow: 'none',
             transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
             cursor: 'default'
         }}
         onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
-            e.currentTarget.style.boxShadow = `
-                0 12px 48px rgba(0, 0, 0, 0.08),
-                0 4px 16px rgba(0, 0, 0, 0.06),
-                0 0 0 1px rgba(255, 255, 255, 0.5),
-                0 0 40px ${color}15,
-                inset 0 1px 0 rgba(255, 255, 255, 0.9)
-            `;
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = 'none';
         }}
         onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0) scale(1)';
-            e.currentTarget.style.boxShadow = `
-                0 8px 32px rgba(0, 0, 0, 0.06),
-                0 2px 8px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.02)
-            `;
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = 'none';
         }}
+
     >
-        {/* Premium Ambient Glow Background */}
-        <div style={{
-            position: 'absolute',
-            top: '-20%',
-            right: '-10%',
-            width: '140px',
-            height: '140px',
-            background: `radial-gradient(circle, ${color}12 0%, ${color}06 40%, transparent 70%)`,
-            borderRadius: '50%',
-            filter: 'blur(25px)',
-            pointerEvents: 'none'
-        }} />
-
-        {/* Subtle Top-left Highlight */}
-        <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '60%',
-            height: '60%',
-            background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4) 0%, transparent 60%)',
-            borderRadius: '20px',
-            pointerEvents: 'none'
-        }} />
-
-        {/* Premium Icon Container with Neon Glow */}
+        {/* Icon Container */}
         <div style={{
             position: 'relative',
             padding: '16px',
             borderRadius: '18px',
-            background: `linear-gradient(135deg, ${color}18 0%, ${color}10 100%)`,
+            background: 'transparent',
             color: color,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: `
-                0 8px 24px ${color}18,
-                0 0 0 1px ${color}10,
-                inset 0 1px 0 rgba(255, 255, 255, 0.3)
-            `,
+            boxShadow: 'none',
             transition: 'all 0.3s ease',
             zIndex: 1
         }}>
-            {/* Icon Neon Glow */}
-            <div style={{
-                position: 'absolute',
-                inset: '-8px',
-                background: `radial-gradient(circle, ${color}25 0%, transparent 70%)`,
-                borderRadius: '18px',
-                filter: 'blur(12px)',
-                opacity: 0.6,
-                zIndex: -1
-            }} />
             <Icon size={28} strokeWidth={2.2} />
         </div>
 
         {/* Content Container */}
         <div style={{ flex: 1, zIndex: 1 }}>
             {/* Title with Premium Typography */}
-            <p style={{ 
-                color: 'var(--text-muted)', 
-                fontSize: '0.875rem', 
-                marginBottom: '8px', 
+            <p style={{
+                color: 'var(--text-muted)',
+                fontSize: '0.875rem',
+                marginBottom: '8px',
                 fontWeight: 500,
                 letterSpacing: '0.02em',
                 textTransform: 'uppercase',
@@ -290,10 +236,10 @@ const StatCard = ({ title, value, change, icon: Icon, color }) => (
             </p>
 
             {/* Value with Elegant Styling */}
-            <h3 style={{ 
-                fontSize: '2rem', 
-                margin: 0, 
-                fontWeight: 700, 
+            <h3 style={{
+                fontSize: '2rem',
+                margin: 0,
+                fontWeight: 700,
                 letterSpacing: '-0.03em',
                 background: 'linear-gradient(135deg, var(--text-main) 0%, #334155 100%)',
                 WebkitBackgroundClip: 'text',
@@ -305,17 +251,17 @@ const StatCard = ({ title, value, change, icon: Icon, color }) => (
             </h3>
 
             {/* Monthly Delta with Refined Styling */}
-            <span style={{ 
-                fontSize: '0.8125rem', 
-                color: '#10b981', 
-                fontWeight: 600, 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '5px', 
+            <span style={{
+                fontSize: '0.8125rem',
+                color: '#10b981',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
                 marginTop: '6px',
                 letterSpacing: '0.01em'
             }}>
-                <TrendingUp size={15} strokeWidth={2.5} /> 
+                <TrendingUp size={15} strokeWidth={2.5} />
                 {change}
             </span>
         </div>
