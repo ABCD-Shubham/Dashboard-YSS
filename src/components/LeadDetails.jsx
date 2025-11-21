@@ -137,7 +137,7 @@ const LeadDetails = () => {
     };
 
     return (
-        <div className="lead-details-page" style={{ background: 'var(--bg-body)' }}>
+        <div className="lead-details-page" style={{ background: 'var(--bg-body)', minHeight: '100vh', width: '100%' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <button
