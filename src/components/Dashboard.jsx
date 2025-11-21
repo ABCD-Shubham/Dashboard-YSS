@@ -417,10 +417,10 @@ const Dashboard = () => {
                     <h3 style={{ fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: 600 }}>Engagement Overview</h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                         {[
-                            { name: 'WhatsApp', value: '2,345', icon: 'https://png.pngtree.com/png-clipart/20190516/original/pngtree-whatsapp-icon-png-image_3584844.jpg', color: '#25D366' },
-                            { name: 'LinkedIn', value: '1,876', icon: 'https://static.vecteezy.com/system/resources/previews/018/930/480/non_2x/linkedin-logo-linkedin-icon-transparent-free-png.png', color: '#0077B5' },
-                            { name: 'TikTok', value: '3,421', icon: 'https://t3.ftcdn.net/jpg/03/41/43/52/360_F_341435208_sdjw1aOLLRwTh5kZzjP1fKvZsi7OkcLT.jpg', color: '#000000' },
-                            { name: 'Instagram', value: '4,567', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png', color: '#E1306C' }
+                            { name: 'WhatsApp', value: '2,345', icon: 'https://img.freepik.com/premium-vector/whatsapp-vector-logo-icon-logotype-vector-social-media_901408-406.jpg?semt=ais_hybrid&w=740&q=80', color: '#25D366' },
+                            { name: 'LinkedIn', value: '1,876', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-0ggeQFzIc6YMAGOxNE6pn9QUpb4vW8HQA&s', color: '#0077B5' },
+                            { name: 'TikTok', value: '3,421', icon: 'https://icon2.cleanpng.com/20200922/xqh/transparent-social-media-1713858561643.webp', color: '#000000' },
+                            { name: 'Instagram', value: '4,567', icon: 'https://i.pinimg.com/736x/5c/ae/71/5cae71db70b9ec562c434d8ba79bcecb.jpg', color: '#E1306C' }
                         ].map((platform) => (
                             <div key={platform.name} style={{
                                 display: 'flex',
