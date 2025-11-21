@@ -42,9 +42,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: radial-gradient(circle at top right, rgba(139, 92, 246, 0.05), transparent 40%),
-    radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.05), transparent 40%);
-  background-attachment: fixed;
 }
 
 /* Hide scrollbar for all browsers while maintaining scroll functionality */
