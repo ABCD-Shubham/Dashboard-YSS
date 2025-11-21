@@ -427,9 +427,9 @@ const Dashboard = () => {
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
                                 padding: '1rem',
-                                backgroundColor: '#f8fafc',
+                                backgroundColor: 'transparent',
                                 borderRadius: '12px',
-                                border: '1px solid #f1f5f9'
+                                border: 'none'
                             }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                     <div style={{
@@ -440,8 +440,8 @@ const Dashboard = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        backgroundColor: 'white',
-                                        boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                                        backgroundColor: 'transparent',
+                                        boxShadow: 'none',
                                         padding: '4px'
                                     }}>
                                         <img src={platform.icon} alt={platform.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
