@@ -28,45 +28,25 @@ const Leads = () => {
 
     return (
         <div className="leads-page">
-            <header className="top-header" style={{ marginBottom: '2rem' }}>
+            <header className="top-header" style={{ marginBottom: '2rem', alignItems: 'center' }}>
+                {/* Left: Title */}
                 <div className="welcome-text">
                     <h1>Leads Management</h1>
                     <p>Identify and engage your most loyal customers</p>
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                    {['All', 'Hot', 'Warm', 'Cold'].map((status) => (
-                        <button
-                            key={status}
-                            onClick={() => setFilter(status)}
-                            className={`btn ${filter === status ? 'btn-primary' : ''}`}
-                            style={{
-                                backgroundColor: filter === status ? '' : 'var(--bg-card)',
-                                color: filter === status ? '' : 'var(--text-muted)',
-                                border: filter === status ? '' : '1px solid var(--border-color)'
-                            }}
-                        >
-                            {status === 'All' && <Filter size={16} style={{ marginRight: '8px' }} />}
-                            {status}
-                        </button>
-                    ))}
-                </div>
-            </header>
-
-            {/* Premium Search Bar */}
-            <div style={{
-                marginBottom: '2rem',
-                position: 'relative'
-            }}>
+                {/* Middle: Search Bar */}
                 <div style={{
-                    position: 'relative',
-                    maxWidth: '600px'
+                    flex: 1,
+                    maxWidth: '500px',
+                    margin: '0 2rem',
+                    position: 'relative'
                 }}>
                     <Search
-                        size={20}
+                        size={18}
                         style={{
                             position: 'absolute',
-                            left: '1.25rem',
+                            left: '1rem',
                             top: '50%',
                             transform: 'translateY(-50%)',
                             color: 'var(--text-muted)',
@@ -81,27 +61,25 @@ const Leads = () => {
                         onChange={(e) => setSearchQuery(e.target.value)}
                         style={{
                             width: '100%',
-                            padding: '1rem 1.25rem 1rem 3.25rem',
-                            fontSize: '0.95rem',
+                            padding: '0.75rem 2.75rem 0.75rem 2.75rem',
+                            fontSize: '0.875rem',
                             fontWeight: 500,
                             color: 'var(--text-main)',
                             background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%)',
                             backdropFilter: 'blur(20px)',
                             WebkitBackdropFilter: 'blur(20px)',
                             border: '1px solid rgba(255, 255, 255, 0.4)',
-                            borderRadius: 'var(--radius-md)',
+                            borderRadius: 'var(--radius-sm)',
                             outline: 'none',
                             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                             boxShadow: `
-                                0 4px 16px rgba(0, 0, 0, 0.04),
-                                0 1px 4px rgba(0, 0, 0, 0.02),
+                                0 2px 8px rgba(0, 0, 0, 0.04),
                                 inset 0 1px 0 rgba(255, 255, 255, 0.8)
                             `
                         }}
                         onFocus={(e) => {
                             e.target.style.boxShadow = `
-                                0 8px 24px rgba(0, 0, 0, 0.06),
-                                0 2px 8px rgba(0, 0, 0, 0.04),
+                                0 4px 12px rgba(0, 0, 0, 0.06),
                                 0 0 0 3px rgba(78, 168, 255, 0.1),
                                 inset 0 1px 0 rgba(255, 255, 255, 0.9)
                             `;
@@ -109,8 +87,7 @@ const Leads = () => {
                         }}
                         onBlur={(e) => {
                             e.target.style.boxShadow = `
-                                0 4px 16px rgba(0, 0, 0, 0.04),
-                                0 1px 4px rgba(0, 0, 0, 0.02),
+                                0 2px 8px rgba(0, 0, 0, 0.04),
                                 inset 0 1px 0 rgba(255, 255, 255, 0.8)
                             `;
                             e.target.style.borderColor = 'rgba(255, 255, 255, 0.4)';
@@ -121,20 +98,20 @@ const Leads = () => {
                             onClick={() => setSearchQuery('')}
                             style={{
                                 position: 'absolute',
-                                right: '1rem',
+                                right: '0.75rem',
                                 top: '50%',
                                 transform: 'translateY(-50%)',
                                 background: 'rgba(100, 116, 139, 0.1)',
                                 border: 'none',
                                 borderRadius: '50%',
-                                width: '24px',
-                                height: '24px',
+                                width: '20px',
+                                height: '20px',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 cursor: 'pointer',
                                 color: 'var(--text-muted)',
-                                fontSize: '14px',
+                                fontSize: '12px',
                                 fontWeight: 600,
                                 transition: 'all 0.2s ease',
                                 zIndex: 1
@@ -150,17 +127,41 @@ const Leads = () => {
                         </button>
                     )}
                 </div>
-                {searchQuery && (
+
+                {/* Right: Filter Buttons */}
+                <div style={{ display: 'flex', gap: '0.75rem', flexShrink: 0 }}>
+                    {['All', 'Hot', 'Warm', 'Cold'].map((status) => (
+                        <button
+                            key={status}
+                            onClick={() => setFilter(status)}
+                            className={`btn ${filter === status ? 'btn-primary' : ''}`}
+                            style={{
+                                backgroundColor: filter === status ? '' : 'var(--bg-card)',
+                                color: filter === status ? '' : 'var(--text-muted)',
+                                border: filter === status ? '' : '1px solid var(--border-color)',
+                                padding: '0.65rem 1.25rem',
+                                fontSize: '0.875rem'
+                            }}
+                        >
+                            {status === 'All' && <Filter size={14} style={{ marginRight: '6px' }} />}
+                            {status}
+                        </button>
+                    ))}
+                </div>
+            </header>
+
+            {/* Search Results Info */}
+            {searchQuery && (
+                <div style={{ marginBottom: '1.5rem' }}>
                     <p style={{
-                        marginTop: '0.75rem',
                         fontSize: '0.875rem',
                         color: 'var(--text-muted)',
                         fontWeight: 500
                     }}>
                         Found {filteredLeads.length} lead{filteredLeads.length !== 1 ? 's' : ''} matching "{searchQuery}"
                     </p>
-                )}
-            </div>
+                </div>
+            )}
 
             {/* Leads Grid */}
             <div style={{
