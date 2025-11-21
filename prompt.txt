@@ -1,0 +1,9 @@
+The name of the plaform is YSS. This is the logo of the platform - It is inside assests/logo.png
+
+Part - II : Leads 
+--> Leads is a page where we see, count the layality points the viewers of instagram, watshapp, tiktok, beehive, etc... based on their engagements and sort them out according to their points, for now as of we want mock data, we will consider  : A person's - View as 3 point, Like as 5 point, Re-viewing page, etc.. as 5 point, commenting as 7 points.   
+--> So, Now, You will show them into catagories (we can sort them out in warm leads (people with mid -range or average & common points overall), cold leads(people with the least points overall) and Hot lead (theese are people with the most points overall)). Show boxes of each people showing their face, their name, what they did (e.g.- view, like, comment, view + like, etc..), their email, their phone number. I want the box to be looking like the image in images and refrences (box)
+--> Whenever cloicked on any box of person. take the user to a new page, Which specifically shows that person's (who' box was made) engagements like what is his name, contact number, email, Graphs of how many visits to post, video content, etc.. how much point, which lead is he in, etc..  (I want flow graph horizontal, showing that spefici person's overall results.) I want the page of each person to be looking exacctly like the image - person'sspecifcpage.jpg in the images and refrences folder. i want that exact designs, beautines, graphs, etc.. maintaing our colour combo.  
+
+
+Build this page first and we will shortly then start with step III
