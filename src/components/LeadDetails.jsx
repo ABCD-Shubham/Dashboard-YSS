@@ -387,8 +387,8 @@ const LeadDetails = () => {
                                                 gap: '1rem',
                                                 padding: '1rem',
                                                 borderRadius: '12px',
-                                                backgroundColor: 'var(--bg-card)',
-                                                border: '1px solid var(--border-color)',
+                                                backgroundColor: 'transparent',
+                                                border: '1px solid rgba(255, 255, 255, 0.2)',
                                                 alignItems: 'center'
                                             }}>
                                                 {/* Post Thumbnail */}
@@ -463,9 +463,9 @@ const LeadDetails = () => {
                                             <div key={i} style={{
                                                 padding: '1rem',
                                                 borderRadius: '12px',
-                                                border: '1px solid var(--border-color)',
-                                                background: 'var(--bg-card)',
-                                                boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+                                                border: '1px solid rgba(255, 255, 255, 0.2)',
+                                                background: 'transparent',
+                                                boxShadow: 'none'
                                             }}>
                                                 <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '0.75rem' }}>
                                                     <div style={{
