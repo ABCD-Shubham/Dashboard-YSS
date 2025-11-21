@@ -425,47 +425,52 @@ const Dashboard = () => {
                                     }} />
                                 ))}
 
-                                {platformProgressData.datasets[0].data.map((value, index) => (
-                                    <div key={index} style={{
-                                        width: '40px',
-                                        height: `${value}%`,
-                                        backgroundColor: platformProgressData.datasets[0].backgroundColor[index],
-                                        borderRadius: '8px 8px 0 0',
-                                        zIndex: 1,
-                                        transition: 'height 1s ease-out',
-                                        position: 'relative'
-                                    }}>
-                                        {/* Tooltip on hover could go here */}
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* X-Axis Labels (Logos + Names) */}
-                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: '1rem' }}>
-                                {platformProgressData.labels.map((label, index) => {
+                                {platformProgressData.datasets[0].data.map((value, index) => {
+                                    const label = platformProgressData.labels[index];
                                     const logoMap = {
                                         'WhatsApp': 'https://img.freepik.com/premium-vector/whatsapp-vector-logo-icon-logotype-vector-social-media_901408-406.jpg?semt=ais_hybrid&w=740&q=80',
                                         'LinkedIn': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH-0ggeQFzIc6YMAGOxNE6pn9QUpb4vW8HQA&s',
                                         'TikTok': 'https://icon2.cleanpng.com/20200922/xqh/transparent-social-media-1713858561643.webp'
                                     };
                                     return (
-                                        <div key={index} style={{ width: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                                        <div key={index} style={{
+                                            width: '40px',
+                                            height: `${value}%`,
+                                            backgroundColor: platformProgressData.datasets[0].backgroundColor[index],
+                                            borderRadius: '8px 8px 0 0',
+                                            zIndex: 1,
+                                            transition: 'height 1s ease-out',
+                                            position: 'relative',
+                                            display: 'flex',
+                                            alignItems: 'flex-end',
+                                            justifyContent: 'center',
+                                            paddingBottom: '8px'
+                                        }}>
                                             <div style={{
                                                 width: '24px',
                                                 height: '24px',
-                                                borderRadius: '6px',
-                                                overflow: 'hidden',
-                                                background: 'transparent',
+                                                borderRadius: '50%',
+                                                backgroundColor: 'rgba(255, 255, 255, 0.9)',
                                                 display: 'flex',
                                                 alignItems: 'center',
-                                                justifyContent: 'center'
+                                                justifyContent: 'center',
+                                                padding: '2px',
+                                                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
                                             }}>
-                                                <img src={logoMap[label]} alt={label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                                                <img src={logoMap[label]} alt={label} style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '50%' }} />
                                             </div>
-                                            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-main)' }}>{label}</span>
                                         </div>
                                     );
                                 })}
+                            </div>
+
+                            {/* X-Axis Labels (Names Only) */}
+                            <div style={{ display: 'flex', justifyContent: 'space-around', paddingTop: '0.75rem' }}>
+                                {platformProgressData.labels.map((label, index) => (
+                                    <div key={index} style={{ width: '40px', display: 'flex', justifyContent: 'center' }}>
+                                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-main)' }}>{label}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
