@@ -175,41 +175,148 @@ const optionsBar = {
 };
 
 const StatCard = ({ title, value, change, icon: Icon, color }) => (
-    <div className="card" style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1.25rem',
-        padding: '1.75rem',
-        position: 'relative',
-        overflow: 'hidden'
-    }}>
+    <div 
+        className="stat-card-premium" 
+        style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1.5rem',
+            padding: '2rem 1.75rem',
+            position: 'relative',
+            overflow: 'hidden',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            borderRadius: '20px',
+            border: '1px solid rgba(255, 255, 255, 0.4)',
+            boxShadow: `
+                0 8px 32px rgba(0, 0, 0, 0.06),
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.02)
+            `,
+            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+            cursor: 'default'
+        }}
+        onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+            e.currentTarget.style.boxShadow = `
+                0 12px 48px rgba(0, 0, 0, 0.08),
+                0 4px 16px rgba(0, 0, 0, 0.06),
+                0 0 0 1px rgba(255, 255, 255, 0.5),
+                0 0 40px ${color}15,
+                inset 0 1px 0 rgba(255, 255, 255, 0.9)
+            `;
+        }}
+        onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+            e.currentTarget.style.boxShadow = `
+                0 8px 32px rgba(0, 0, 0, 0.06),
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.02)
+            `;
+        }}
+    >
+        {/* Premium Ambient Glow Background */}
         <div style={{
             position: 'absolute',
-            top: '-10%',
-            right: '-5%',
-            width: '100px',
-            height: '100px',
-            background: `radial-gradient(circle, ${color}15 0%, transparent 70%)`,
+            top: '-20%',
+            right: '-10%',
+            width: '140px',
+            height: '140px',
+            background: `radial-gradient(circle, ${color}12 0%, ${color}06 40%, transparent 70%)`,
             borderRadius: '50%',
+            filter: 'blur(25px)',
+            pointerEvents: 'none'
         }} />
 
+        {/* Subtle Top-left Highlight */}
         <div style={{
-            padding: '14px',
-            borderRadius: '16px',
-            backgroundColor: `${color}15`,
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '60%',
+            height: '60%',
+            background: 'radial-gradient(circle at top left, rgba(255, 255, 255, 0.4) 0%, transparent 60%)',
+            borderRadius: '20px',
+            pointerEvents: 'none'
+        }} />
+
+        {/* Premium Icon Container with Neon Glow */}
+        <div style={{
+            position: 'relative',
+            padding: '16px',
+            borderRadius: '18px',
+            background: `linear-gradient(135deg, ${color}18 0%, ${color}10 100%)`,
             color: color,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: `0 4px 12px ${color}20`
+            boxShadow: `
+                0 8px 24px ${color}18,
+                0 0 0 1px ${color}10,
+                inset 0 1px 0 rgba(255, 255, 255, 0.3)
+            `,
+            transition: 'all 0.3s ease',
+            zIndex: 1
         }}>
-            <Icon size={26} strokeWidth={2} />
+            {/* Icon Neon Glow */}
+            <div style={{
+                position: 'absolute',
+                inset: '-8px',
+                background: `radial-gradient(circle, ${color}25 0%, transparent 70%)`,
+                borderRadius: '18px',
+                filter: 'blur(12px)',
+                opacity: 0.6,
+                zIndex: -1
+            }} />
+            <Icon size={28} strokeWidth={2.2} />
         </div>
-        <div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '6px', fontWeight: 500 }}>{title}</p>
-            <h3 style={{ fontSize: '1.75rem', margin: 0, fontWeight: 700, letterSpacing: '-0.02em' }}>{value}</h3>
-            <span style={{ fontSize: '0.8rem', color: '#10b981', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', marginTop: '4px' }}>
-                <TrendingUp size={14} /> {change}
+
+        {/* Content Container */}
+        <div style={{ flex: 1, zIndex: 1 }}>
+            {/* Title with Premium Typography */}
+            <p style={{ 
+                color: 'var(--text-muted)', 
+                fontSize: '0.875rem', 
+                marginBottom: '8px', 
+                fontWeight: 500,
+                letterSpacing: '0.02em',
+                textTransform: 'uppercase',
+                opacity: 0.85
+            }}>
+                {title}
+            </p>
+
+            {/* Value with Elegant Styling */}
+            <h3 style={{ 
+                fontSize: '2rem', 
+                margin: 0, 
+                fontWeight: 700, 
+                letterSpacing: '-0.03em',
+                background: 'linear-gradient(135deg, var(--text-main) 0%, #334155 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                lineHeight: 1.2
+            }}>
+                {value}
+            </h3>
+
+            {/* Monthly Delta with Refined Styling */}
+            <span style={{ 
+                fontSize: '0.8125rem', 
+                color: '#10b981', 
+                fontWeight: 600, 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '5px', 
+                marginTop: '6px',
+                letterSpacing: '0.01em'
+            }}>
+                <TrendingUp size={15} strokeWidth={2.5} /> 
+                {change}
             </span>
         </div>
     </div>
