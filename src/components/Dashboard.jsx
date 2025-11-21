@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -216,21 +216,8 @@ const StatCard = ({ title, value, change, icon: Icon, color }) => (
 );
 
 const Dashboard = () => {
-    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
-
-    useEffect(() => {
-        const handleThemeChange = (e) => {
-            setIsDarkMode(e.detail.darkMode);
-        };
-
-        window.addEventListener('themeChange', handleThemeChange);
-        return () => window.removeEventListener('themeChange', handleThemeChange);
-    }, []);
-
-
-
-    // Dynamic Chart Options based on Theme
-    const getLineOptions = (dark) => ({
+    // Light mode chart options
+    const lineChartOptions = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
@@ -241,7 +228,7 @@ const Dashboard = () => {
                     usePointStyle: true,
                     boxWidth: 8,
                     padding: 20,
-                    color: dark ? '#e2e8f0' : '#64748b',
+                    color: '#64748b',
                     font: {
                         family: "'Outfit', sans-serif",
                         size: 12,
@@ -261,13 +248,13 @@ const Dashboard = () => {
                 padding: {
                     bottom: 30,
                 },
-                color: dark ? '#64748b' : '#1e293b'
+                color: '#1e293b'
             },
             tooltip: {
-                backgroundColor: dark ? 'rgba(30, 41, 59, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-                titleColor: dark ? '#64748b' : '#1e293b',
-                bodyColor: dark ? '#64748b' : '#64748b',
-                borderColor: dark ? '#334155' : '#e2e8f0',
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                titleColor: '#1e293b',
+                bodyColor: '#64748b',
+                borderColor: '#e2e8f0',
                 borderWidth: 1,
                 padding: 12,
                 boxPadding: 6,
@@ -282,11 +269,11 @@ const Dashboard = () => {
                 grid: {
                     borderDash: [4, 4],
                     drawBorder: false,
-                    color: dark ? 'rgba(255, 255, 255, 0.05)' : '#f1f5f9', // Subtle grid in dark mode
+                    color: '#f1f5f9',
                 },
                 ticks: {
                     padding: 10,
-                    color: dark ? '#64748b' : '#64748b',
+                    color: '#64748b',
                     font: { family: "'Outfit', sans-serif", size: 11 }
                 },
                 border: { display: false }
@@ -297,7 +284,7 @@ const Dashboard = () => {
                 },
                 ticks: {
                     padding: 10,
-                    color: dark ? '#64748b' : '#64748b',
+                    color: '#64748b',
                     font: { family: "'Outfit', sans-serif", size: 11 }
                 },
                 border: { display: false }
@@ -317,7 +304,7 @@ const Dashboard = () => {
                 hoverRadius: 4,
             }
         }
-    });
+    };
 
     return (
         <div className="dashboard">
@@ -338,7 +325,7 @@ const Dashboard = () => {
 
             {/* Main Chart Area - Audience Growth */}
             <div className="card" style={{ height: '400px', marginBottom: '1.5rem' }}>
-                <Line options={getLineOptions(isDarkMode)} data={socialGrowthData} />
+                <Line options={lineChartOptions} data={socialGrowthData} />
             </div>
 
             <div className="dashboard-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginTop: 0 }}>
@@ -355,13 +342,13 @@ const Dashboard = () => {
                                 scales: {
                                     y: {
                                         beginAtZero: true,
-                                        grid: { color: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : '#f1f5f9', borderDash: [4, 4] },
+                                        grid: { color: '#f1f5f9', borderDash: [4, 4] },
                                         ticks: { font: { family: "'Outfit', sans-serif", size: 10 }, color: '#64748b' },
                                         border: { display: false }
                                     },
                                     x: {
                                         grid: { display: false },
-                                        ticks: { font: { family: "'Outfit', sans-serif", size: 11, weight: 600 }, color: isDarkMode ? '#64748b' : '#1e293b' },
+                                        ticks: { font: { family: "'Outfit', sans-serif", size: 11, weight: 600 }, color: '#1e293b' },
                                         border: { display: false }
                                     }
                                 },
@@ -387,9 +374,9 @@ const Dashboard = () => {
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
                                 padding: '1rem',
-                                backgroundColor: isDarkMode ? 'rgba(255,255,255,0.03)' : '#f8fafc',
+                                backgroundColor: '#f8fafc',
                                 borderRadius: '12px',
-                                border: isDarkMode ? '1px solid rgba(255,255,255,0.05)' : '1px solid #f1f5f9'
+                                border: '1px solid #f1f5f9'
                             }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                                     <div style={{
@@ -400,15 +387,15 @@ const Dashboard = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        backgroundColor: isDarkMode ? 'rgba(100, 116, 139, 0.2)' : 'white',
+                                        backgroundColor: 'white',
                                         boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
                                         padding: '4px'
                                     }}>
                                         <img src={platform.icon} alt={platform.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                                     </div>
-                                    <span style={{ fontWeight: 500, color: isDarkMode ? '#e2e8f0' : '#334155' }}>{platform.name}</span>
+                                    <span style={{ fontWeight: 500, color: '#334155' }}>{platform.name}</span>
                                 </div>
-                                <span style={{ fontWeight: 700, fontSize: '1.1rem', color: isDarkMode ? '#e2e8f0' : '#0f172a' }}>{platform.value}</span>
+                                <span style={{ fontWeight: 700, fontSize: '1.1rem', color: '#0f172a' }}>{platform.value}</span>
                             </div>
                         ))}
                     </div>

@@ -275,16 +275,17 @@ export const colorThemes = [
     }
 ];
 
-export const applyTheme = (themeId, darkMode) => {
+export const applyTheme = (themeId) => {
     const theme = colorThemes.find(t => t.id === themeId) || colorThemes[0];
     if (theme) {
+        // Always apply light mode colors
         document.documentElement.style.setProperty('--primary', theme.colors.primary);
         document.documentElement.style.setProperty('--primary-light', theme.colors.primaryLight);
         document.documentElement.style.setProperty('--primary-dark', theme.colors.primaryDark);
-        document.documentElement.style.setProperty('--bg-body', darkMode ? theme.colors.backgroundDark : theme.colors.background);
-        document.documentElement.style.setProperty('--bg-card', darkMode ? theme.colors.cardBgDark : theme.colors.cardBg);
-        document.documentElement.style.setProperty('--text-main', darkMode ? theme.colors.textMainDark : theme.colors.textMain);
-        document.documentElement.style.setProperty('--sidebar-bg', darkMode ? theme.colors.sidebarBgDark : theme.colors.sidebarBg);
-        document.documentElement.style.setProperty('--border-color', darkMode ? theme.colors.borderColorDark : theme.colors.borderColor);
+        document.documentElement.style.setProperty('--bg-body', theme.colors.background);
+        document.documentElement.style.setProperty('--bg-card', theme.colors.cardBg);
+        document.documentElement.style.setProperty('--text-main', theme.colors.textMain);
+        document.documentElement.style.setProperty('--sidebar-bg', theme.colors.sidebarBg);
+        document.documentElement.style.setProperty('--border-color', theme.colors.borderColor || '#e2e8f0');
     }
 };

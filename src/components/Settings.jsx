@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { applyTheme } from '../utils/theme';
 
 const Settings = () => {
-    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('darkMode') === 'true');
-
-    // Load midnight-electric theme on mount and listen for dark mode changes
+    // Load midnight-electric theme on mount
     useEffect(() => {
-        // Always use midnight-electric theme
         const fixedTheme = 'midnight-electric';
         localStorage.setItem('selectedTheme', fixedTheme);
-        applyTheme(fixedTheme, isDarkMode);
-
-        const handleThemeChange = (e) => {
-            setIsDarkMode(e.detail.darkMode);
-            applyTheme(fixedTheme, e.detail.darkMode);
-        };
-
-        window.addEventListener('themeChange', handleThemeChange);
-        return () => window.removeEventListener('themeChange', handleThemeChange);
-    }, [isDarkMode]);
+        applyTheme(fixedTheme);
+    }, []);
 
     return (
         <div className="settings-page">
@@ -32,7 +21,7 @@ const Settings = () => {
                     <div style={{ textAlign: 'center', padding: '2rem' }}>
                         <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Appearance</h3>
                         <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                            Use the toggle in the top-right corner to switch between light and dark mode.
+                            YSS platform uses the Midnight Electric theme for a clean and modern interface.
                         </p>
                         <div style={{
                             display: 'inline-block',
@@ -45,7 +34,7 @@ const Settings = () => {
                                 Current Theme: <strong style={{ color: 'var(--primary)' }}>Midnight Electric</strong>
                             </p>
                             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: '0.5rem 0 0 0' }}>
-                                Mode: <strong style={{ color: 'var(--primary)' }}>{isDarkMode ? 'Dark' : 'Light'}</strong>
+                                Mode: <strong style={{ color: 'var(--primary)' }}>Light</strong>
                             </p>
                         </div>
                     </div>
