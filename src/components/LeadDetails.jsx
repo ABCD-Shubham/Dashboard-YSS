@@ -137,7 +137,7 @@ const LeadDetails = () => {
     };
 
     return (
-        <div className="lead-details-page">
+        <div className="lead-details-page" style={{ background: 'var(--bg-body)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <button
@@ -150,15 +150,15 @@ const LeadDetails = () => {
                     <h2 style={{ fontSize: '1.25rem', margin: 0 }}>Lead Profile</h2>
                 </div>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button className="btn" style={{ background: 'var(--bg-card)', padding: '8px' }}><Printer size={18} color="var(--text-muted)" /></button>
-                    <button className="btn" style={{ background: 'var(--bg-card)', padding: '8px' }}><Settings size={18} color="var(--text-muted)" /></button>
+                    <button className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Printer size={18} color="var(--text-muted)" /></button>
+                    <button className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Settings size={18} color="var(--text-muted)" /></button>
                 </div>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '1.5rem', alignItems: 'start' }}>
 
                 {/* Left Sidebar - Profile Card */}
-                <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
+                <div className="card" style={{ padding: '0', overflow: 'hidden', background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', boxShadow: 'none' }}>
                     <div style={{ padding: '2rem', textAlign: 'center', borderBottom: '1px solid var(--border-color)' }}>
                         <div style={{ position: 'relative', display: 'inline-block', marginBottom: '1rem' }}>
                             <div style={{
@@ -274,7 +274,7 @@ const LeadDetails = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
 
                     {/* Top Chart Section */}
-                    <div className="card" style={{ height: '400px', display: 'flex', flexDirection: 'column' }}>
+                    <div className="card" style={{ height: '400px', display: 'flex', flexDirection: 'column', background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', boxShadow: 'none' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                             <h3 style={{ fontSize: '1.1rem' }}>Engagement Efficiency</h3>
                             <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -291,7 +291,7 @@ const LeadDetails = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
 
                         {/* Engagement Trends (Mini Charts) */}
-                        <div className="card">
+                        <div className="card" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', boxShadow: 'none' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                                 <h3 style={{ fontSize: '1.1rem' }}>Engagement Trends</h3>
                                 <MoreHorizontal size={18} color="var(--text-muted)" style={{ cursor: 'pointer' }} />
@@ -334,7 +334,7 @@ const LeadDetails = () => {
                         </div>
 
                         {/* NEW BOX 1: Content Affinity (Radar Chart) */}
-                        <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className="card" style={{ display: 'flex', flexDirection: 'column', background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', boxShadow: 'none' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                                 <h3 style={{ fontSize: '1.1rem' }}>Content Affinity</h3>
                                 <div style={{ background: 'var(--bg-body)', padding: '4px', borderRadius: '6px' }}>
@@ -373,7 +373,7 @@ const LeadDetails = () => {
                         </div>
 
                         {/* Detailed Engagement History & AI Recommendations */}
-                        <div className="card" style={{ gridColumn: '1 / -1' }}>
+                        <div className="card" style={{ gridColumn: '1 / -1', background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', boxShadow: 'none' }}>
                             <div style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: '2rem' }}>
 
                                 {/* Left Column: History */}
