@@ -80,6 +80,7 @@ ul {
   margin-left: var(--sidebar-width);
   padding: 2rem;
   overflow-y: auto;
+  background: var(--bg-body);
 }
 
 /* Typography */
