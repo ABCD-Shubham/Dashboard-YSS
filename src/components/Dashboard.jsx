@@ -369,7 +369,7 @@ const Dashboard = () => {
             </header>
 
             {/* Quick Stats Row */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '1.5rem' }}>
+            <div className="stats-grid">
                 <StatCard title="Total Views" value="124.5K" change="+12.5% from last month" icon={Eye} color="#7c3aed" />
                 <StatCard title="Total Followers" value="45.2K" change="+8.2% from last month" icon={Users} color="#d62976" />
                 <StatCard title="Engagement Rate" value="5.8%" change="+2.1% from last month" icon={TrendingUp} color="#10b981" />
@@ -381,7 +381,7 @@ const Dashboard = () => {
                 <Line options={lineChartOptions} data={socialGrowthData} />
             </div>
 
-            <div className="dashboard-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginTop: 0 }}>
+            <div className="dashboard-grid" style={{ marginTop: 0 }}>
                 {/* Social Media Progress Chart - Custom Implementation */}
                 <div className="card" style={{ padding: '1.5rem' }}>
                     <h3 style={{ fontSize: '1.1rem', marginBottom: '1.5rem', fontWeight: 600 }}>Social Media Progress</h3>
