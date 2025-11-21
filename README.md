@@ -539,12 +539,6 @@ Contributions are welcome! Please follow these steps:
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 Support
-
-For support, questions, or feedback:
-- Open an issue on GitHub
-- Contact: [Your contact information]
-
 ## 🙏 Acknowledgments
 
 - Chart.js for excellent charting library
