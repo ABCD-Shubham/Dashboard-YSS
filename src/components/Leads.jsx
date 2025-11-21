@@ -65,17 +65,14 @@ const Leads = () => {
                             fontSize: '0.875rem',
                             fontWeight: 500,
                             color: 'var(--text-main)',
-                            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%)',
-                            backdropFilter: 'blur(20px)',
-                            WebkitBackdropFilter: 'blur(20px)',
+                            background: 'transparent',
+                            backdropFilter: 'none',
+                            WebkitBackdropFilter: 'none',
                             border: '1px solid rgba(255, 255, 255, 0.4)',
                             borderRadius: 'var(--radius-sm)',
                             outline: 'none',
                             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                            boxShadow: `
-                                0 2px 8px rgba(0, 0, 0, 0.04),
-                                inset 0 1px 0 rgba(255, 255, 255, 0.8)
-                            `
+                            boxShadow: 'none'
                         }}
                         onFocus={(e) => {
                             e.target.style.boxShadow = `
@@ -182,11 +179,11 @@ const Leads = () => {
                         gridColumn: '1 / -1',
                         textAlign: 'center',
                         padding: '4rem 2rem',
-                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%)',
-                        backdropFilter: 'blur(20px)',
+                        background: 'transparent',
+                        backdropFilter: 'none',
                         borderRadius: 'var(--radius-lg)',
-                        border: '1px solid rgba(255, 255, 255, 0.4)',
-                        boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)'
+                        border: 'none',
+                        boxShadow: 'none'
                     }}>
                         <Search size={48} style={{ color: 'var(--text-muted)', opacity: 0.3, marginBottom: '1rem' }} />
                         <h3 style={{ color: 'var(--text-main)', marginBottom: '0.5rem' }}>No leads found</h3>
