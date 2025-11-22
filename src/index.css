@@ -171,22 +171,42 @@ h3 {
 }
 
 .logo-img {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
+.logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .logo-text {
-  font-size: 2.2rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #EC4899;
+  /* Pink */
+  letter-spacing: 0.5px;
+  line-height: 0.85;
+  transform: scaleX(1.25);
+  /* Wider breadth */
+  transform-origin: left;
+  margin-bottom: 4px;
+  display: block;
+  height: auto;
+}
+
+.logo-subtitle {
+  font-size: 0.65rem;
   color: #F59E0B;
   /* Yellow */
-  letter-spacing: -1px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  height: 40px;
-  /* Match logo height */
+  font-family: cursive;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  margin-left: 2px;
 }
 
 .nav-list {

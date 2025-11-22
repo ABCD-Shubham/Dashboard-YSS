@@ -14,7 +14,10 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="logo-container">
         <img src="/assets/logo.png" alt="YSS Logo" className="logo-img" />
-        <span className="logo-text">YSS</span>
+        <div className="logo-text-wrapper">
+          <span className="logo-text">YSS</span>
+          <span className="logo-subtitle">Your Salon Support</span>
+        </div>
       </div>
 
       <nav className="nav-list">
