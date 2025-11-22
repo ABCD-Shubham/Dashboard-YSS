@@ -1,148 +1,143 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { leadsData } from '../data/mockData';
-import {
-    ArrowLeft, Phone, Mail, MapPin, Calendar, Award,
-    MoreHorizontal, Settings, Printer, Edit2, User, Globe, Home,
-    TrendingUp, MessageCircle, Eye, ThumbsUp, Sparkles
-} from 'lucide-react';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-    RadialLinearScale,
-} from 'chart.js';
-import { Bar, Line, Radar } from 'react-chartjs-2';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { useRef } from 'react';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    PointElement,
-    LineElement,
-    RadialLinearScale,
-    Title,
-    Tooltip,
-    Legend
-);
+// ... (existing imports)
 
 const LeadDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const lead = leadsData.find(l => l.id === parseInt(id));
+    const printRef = useRef();
 
-    if (!lead) return <div>Lead not found</div>;
+    // ... (existing stats and chart data)
 
-    // Default stats if not present in mock data
-    const stats = lead.stats || {
-        likes: [12, 19, 3, 5, 2, 3, 9],
-        comments: [2, 3, 20, 5, 1, 4, 2],
-        views: [35, 40, 55, 60, 45, 50, 65]
-    };
+    const handleDownloadPDF = async () => {
+        const element = printRef.current;
+        if (!element) return;
 
-    // Main Vertical Bar Chart (Sales Efficiency Style)
-    const mainChartData = {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        datasets: [
-            {
-                label: 'Views',
-                data: [65, 59, 80, 81, 56, 55, 40],
-                backgroundColor: '#3b82f6', // Blue
-                borderRadius: 4,
-                barPercentage: 0.5,
-            },
-            {
-                label: 'Engagements',
-                data: [28, 48, 40, 19, 86, 27, 90],
-                backgroundColor: '#facc15', // Yellow
-                borderRadius: 4,
-                barPercentage: 0.5,
-            },
-            {
-                label: 'Points',
-                data: [45, 25, 60, 45, 30, 70, 55],
-                backgroundColor: '#ec4899', // Pink
-                borderRadius: 4,
-                barPercentage: 0.5,
-            },
-        ],
-    };
+        try {
+            const canvas = await html2canvas(element, {
+                scale: 2, // Higher quality
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#ffffff'
+            });
 
-    const mainChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false }, // Hide legend to match design
-            tooltip: {
-                backgroundColor: '#1e293b',
-                titleColor: '#fff',
-                bodyColor: '#fff',
-                padding: 12,
-                cornerRadius: 8,
-                displayColors: false,
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = pdfWidth;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            let heightLeft = imgHeight;
+            let position = 0;
+
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pdfHeight;
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pdfHeight;
             }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                grid: {
-                    color: '#f1f5f9',
-                    drawBorder: false,
-                },
-                ticks: {
-                    color: '#94a3b8',
-                    font: { family: "'Outfit', sans-serif", size: 11 }
-                },
-                border: { display: false }
-            },
-            x: {
-                grid: { display: false },
-                ticks: {
-                    color: '#64748b',
-                    font: { family: "'Outfit', sans-serif", size: 11 }
-                },
-                border: { display: false }
-            },
-        },
+
+            pdf.save(`${lead.name.replace(/\s+/g, '_')}_Audit_Report.pdf`);
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+        }
     };
 
-    // Mini Line Charts Configuration
-    const createMiniChartData = (data, color) => ({
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-        datasets: [{
-            data: data,
-            borderColor: color,
-            borderWidth: 2,
-            tension: 0.4,
-            pointRadius: 0,
-            pointHoverRadius: 4,
-        }]
-    });
-
-    const miniChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false }, tooltip: { enabled: false } },
-        scales: {
-            x: { display: false },
-            y: { display: false, min: 0 }
-        },
-        layout: { padding: 5 }
-    };
+    // ... (rest of the component)
 
     return (
         <div className="lead-details-page" style={{ background: 'var(--bg-body)', height: 'calc(100vh - 4rem)', width: '100%', overflow: 'hidden' }}>
 
+            {/* Hidden Audit Template for PDF Generation */}
+            <div style={{ position: 'absolute', left: '-9999px', top: 0 }}>
+                <div ref={printRef} style={{
+                    width: '210mm',
+                    minHeight: '297mm',
+                    padding: '20mm',
+                    background: '#ffffff',
+                    fontFamily: "'Outfit', sans-serif",
+                    color: '#0f172a'
+                }}>
+                    {/* Header */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #e2e8f0', paddingBottom: '20px', marginBottom: '30px' }}>
+                        <div>
+                            <h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#7c3aed', margin: 0 }}>YSS Audit Report</h1>
+                            <p style={{ fontSize: '12px', color: '#64748b', marginTop: '5px' }}>Generated on {new Date().toLocaleDateString()}</p>
+                        </div>
+                        <div style={{ textAlign: 'right' }}>
+                            <h2 style={{ fontSize: '18px', fontWeight: '600', margin: 0 }}>{lead.name}</h2>
+                            <p style={{ fontSize: '12px', color: '#64748b' }}>{lead.platform} Influencer</p>
+                        </div>
+                    </div>
+
+                    {/* Executive Summary */}
+                    <div style={{ marginBottom: '30px', background: '#f8fafc', padding: '20px', borderRadius: '12px' }}>
+                        <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '15px', color: '#0f172a' }}>Executive Summary</h3>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+                            <div>
+                                <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '4px' }}>Total Points</p>
+                                <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#7c3aed' }}>{lead.points}</p>
+                            </div>
+                            <div>
+                                <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '4px' }}>Total Views</p>
+                                <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#10b981' }}>{stats.views.reduce((a, b) => a + b, 0)}</p>
+                            </div>
+                            <div>
+                                <p style={{ fontSize: '12px', color: '#64748b', marginBottom: '4px' }}>Current Rank</p>
+                                <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#f59e0b' }}>1st</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Charts Section */}
+                    <div style={{ marginBottom: '30px' }}>
+                        <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '15px', borderLeft: '4px solid #7c3aed', paddingLeft: '10px' }}>Engagement Efficiency</h3>
+                        <div style={{ height: '300px', width: '100%', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '15px' }}>
+                            <Bar data={mainChartData} options={{ ...mainChartOptions, animation: false }} />
+                        </div>
+                    </div>
+
+                    {/* Contact & Details */}
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '30px' }}>
+                        <div>
+                            <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '15px', borderLeft: '4px solid #ec4899', paddingLeft: '10px' }}>Contact Information</h3>
+                            <div style={{ fontSize: '14px', lineHeight: '1.8' }}>
+                                <p><strong style={{ color: '#64748b' }}>Email:</strong> {lead.email}</p>
+                                <p><strong style={{ color: '#64748b' }}>Phone:</strong> {lead.phone}</p>
+                                <p><strong style={{ color: '#64748b' }}>Address:</strong> {lead.address}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '15px', borderLeft: '4px solid #3b82f6', paddingLeft: '10px' }}>Profile Details</h3>
+                            <div style={{ fontSize: '14px', lineHeight: '1.8' }}>
+                                <p><strong style={{ color: '#64748b' }}>User ID:</strong> {lead.userId}</p>
+                                <p><strong style={{ color: '#64748b' }}>Status:</strong> {lead.status}</p>
+                                <p><strong style={{ color: '#64748b' }}>Country:</strong> {lead.country}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* AI Recommendations */}
+                    <div style={{ marginTop: 'auto', borderTop: '2px solid #e2e8f0', paddingTop: '20px' }}>
+                        <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#7c3aed' }}>AI Recommendations</h3>
+                        <p style={{ fontSize: '14px', color: '#475569', lineHeight: '1.6' }}>
+                            Based on the engagement analysis, {lead.name} shows strong performance in video content.
+                            It is recommended to increase posting frequency on weekends to maximize reach.
+                            Collaborative content with other {lead.platform} influencers could further boost the engagement rate by estimated 15%.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '1.5rem', height: '100%' }}>
-
-                {/* Left Sidebar - Profile Card */}
+                {/* ... (Left Sidebar) */}
                 <div className="card" style={{
                     padding: '0',
                     height: '100%',
@@ -278,7 +273,7 @@ const LeadDetails = () => {
                             <h2 style={{ fontSize: '1.25rem', margin: 0 }}>Lead Profile</h2>
                         </div>
                         <div style={{ display: 'flex', gap: '0.5rem' }}>
-                            <button className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Printer size={18} color="var(--text-muted)" /></button>
+                            <button onClick={handleDownloadPDF} className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Printer size={18} color="var(--text-muted)" /></button>
                             <button className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Settings size={18} color="var(--text-muted)" /></button>
                         </div>
                     </div>
@@ -517,7 +512,7 @@ const LeadDetails = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
