@@ -6,7 +6,7 @@ import { leadsData } from '../data/mockData';
 import {
     ArrowLeft, Phone, Mail, MapPin, Calendar, Award,
     MoreHorizontal, Settings, Printer, Edit2, User, Globe, Home,
-    TrendingUp, MessageCircle, Eye, ThumbsUp, Sparkles
+    TrendingUp, MessageCircle, Eye, ThumbsUp, Sparkles, Check
 } from 'lucide-react';
 import {
     Chart as ChartJS,
@@ -646,41 +646,38 @@ const LeadDetails = () => {
 
 
             {/* Success Notification Popup */}
-            {
-                showNotification && (
+            {showNotification && (
+                <div style={{
+                    position: 'fixed',
+                    bottom: '2rem',
+                    right: '2rem',
+                    background: '#000000',
+                    color: '#ffffff',
+                    padding: '12px 24px',
+                    borderRadius: '50px',
+                    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
+                    zIndex: 9999,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    animation: 'fadeIn 0.3s ease-out',
+                    border: '1px solid rgba(255,255,255,0.1)'
+                }}>
                     <div style={{
-                        position: 'fixed',
-                        top: '2rem',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        background: 'rgba(16, 185, 129, 0.85)', // Greenish transparent
-                        backdropFilter: 'blur(12px)',
-                        WebkitBackdropFilter: 'blur(12px)',
-                        padding: '1rem 2rem',
-                        borderRadius: '50px',
-                        border: '1px solid rgba(255, 255, 255, 0.3)',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
-                        zIndex: 9999,
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '1rem',
-                        animation: 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+                        justifyContent: 'center',
+                        background: 'rgba(74, 222, 128, 0.15)',
+                        borderRadius: '50%',
+                        padding: '4px'
                     }}>
-                        <div style={{
-                            background: 'rgba(255, 255, 255, 0.25)',
-                            borderRadius: '50%',
-                            padding: '6px',
-                            display: 'flex',
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                        }}>
-                            <Printer size={20} color="#fff" strokeWidth={2.5} />
-                        </div>
-                        <span style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem', letterSpacing: '0.01em' }}>
-                            Downloaded {lead.name}'s Profile
-                        </span>
+                        <Check size={18} color="#4ade80" strokeWidth={3} />
                     </div>
-                )
-            }
+                    <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>
+                        Downloaded {lead.name}'s Profile
+                    </span>
+                </div>
+            )}
         </div >
     );
 };
