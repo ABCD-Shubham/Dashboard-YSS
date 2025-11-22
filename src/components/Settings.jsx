@@ -9,7 +9,11 @@ const Settings = () => {
             alignItems: 'center',
             justifyContent: 'center',
             padding: 0,
-            margin: 0
+            margin: 0,
+            marginLeft: '-2rem', // Offset the main-content padding
+            marginTop: '-2rem',
+            marginRight: '-2rem',
+            marginBottom: '-2rem'
         }}>
             <img
                 src="/screenshots/coming-soon.png"
@@ -17,7 +21,7 @@ const Settings = () => {
                 style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'contain'
+                    objectFit: 'cover' // Changed from contain to cover
                 }}
             />
         </div>
