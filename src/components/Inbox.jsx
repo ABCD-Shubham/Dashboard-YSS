@@ -13,7 +13,8 @@ const Inbox = () => {
             alignItems: 'center',
             justifyContent: 'center',
             padding: 0,
-            margin: 0
+            margin: 0,
+            backgroundColor: '#E75A9D' // Pink background matching image
         }}>
             <img
                 src="/screenshots/coming-soon.png"
@@ -21,7 +22,7 @@ const Inbox = () => {
                 style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover' // Changed from contain to cover
+                    objectFit: 'contain' // Changed from contain to cover
                 }}
             />
         </div>

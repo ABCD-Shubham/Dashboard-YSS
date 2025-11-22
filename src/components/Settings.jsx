@@ -13,7 +13,8 @@ const Settings = () => {
             alignItems: 'center',
             justifyContent: 'center',
             padding: 0,
-            margin: 0
+            margin: 0,
+            backgroundColor: '#E75A9D' // Pink background matching image
         }}>
             <img
                 src="/screenshots/coming-soon.png"
@@ -21,7 +22,7 @@ const Settings = () => {
                 style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover'
+                    objectFit: 'contain'
                 }}
             />
         </div>
