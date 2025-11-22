@@ -137,21 +137,19 @@ const LeadDetails = () => {
     };
 
     return (
-        <div className="lead-details-page" style={{ background: 'var(--bg-body)', minHeight: '100vh', width: '100%' }}>
+        <div className="lead-details-page" style={{ background: 'var(--bg-body)', height: 'calc(100vh - 4rem)', width: '100%', overflow: 'hidden' }}>
 
 
-            <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '1.5rem', alignItems: 'start' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '1.5rem', height: '100%' }}>
 
                 {/* Left Sidebar - Profile Card */}
                 <div className="card" style={{
                     padding: '0',
+                    height: '100%',
                     overflowY: 'auto',
-                    maxHeight: 'calc(100vh - 4rem)',
                     background: 'transparent',
                     border: '1px solid rgba(255, 255, 255, 0.2)',
                     boxShadow: 'none',
-                    position: 'sticky',
-                    top: '2rem',
                     scrollbarWidth: 'none'
                 }}>
                     <div style={{ padding: '2rem', textAlign: 'center', borderBottom: '1px solid var(--border-color)' }}>
@@ -266,7 +264,7 @@ const LeadDetails = () => {
                 </div>
 
                 {/* Right Content Area */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%', overflowY: 'auto', paddingRight: '0.5rem' }}>
                     {/* Header moved here */}
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
