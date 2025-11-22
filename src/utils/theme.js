@@ -20,10 +20,10 @@ export const colorThemes = [
         id: 'midnight-electric',
         name: 'Midnight Electric',
         colors: {
-            primary: '#4EA8FF',
-            primaryLight: '#76BBFF',
-            primaryDark: '#2690E8',
-            background: '#E8F4FF',
+            primary: '#475569', // Slate 600
+            primaryLight: '#94a3b8', // Slate 400
+            primaryDark: '#334155', // Slate 700
+            background: '#F7F9FC', // Soft Cloud White
             backgroundDark: '#0A0F1F',
             cardBg: 'rgba(255, 255, 255, 0.9)',
             cardBgDark: 'rgba(30, 42, 71, 0.9)',
