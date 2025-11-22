@@ -3,17 +3,17 @@ import React from 'react';
 const Settings = () => {
     return (
         <div style={{
-            width: '100%',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
             height: '100vh',
+            zIndex: 9999,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             padding: 0,
-            margin: 0,
-            marginLeft: '-2rem', // Offset the main-content padding
-            marginTop: '-2rem',
-            marginRight: '-2rem',
-            marginBottom: '-2rem'
+            margin: 0
         }}>
             <img
                 src="/screenshots/coming-soon.png"
