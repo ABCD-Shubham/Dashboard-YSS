@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -39,6 +39,7 @@ const LeadDetails = () => {
     const navigate = useNavigate();
     const lead = leadsData.find(l => l.id === parseInt(id));
     const printRef = useRef();
+    const [showNotification, setShowNotification] = useState(false);
 
     if (!lead) return <div>Lead not found</div>;
 
@@ -172,6 +173,9 @@ const LeadDetails = () => {
             }
 
             pdf.save(`${lead.name.replace(/\s+/g, '_')}_Audit_Report.pdf`);
+
+            setShowNotification(true);
+            setTimeout(() => setShowNotification(false), 3000);
         } catch (error) {
             console.error('Error generating PDF:', error);
         }
@@ -639,6 +643,44 @@ const LeadDetails = () => {
                     </div>
                 </div>
             </div>
+
+
+            {/* Success Notification Popup */}
+            {
+                showNotification && (
+                    <div style={{
+                        position: 'fixed',
+                        top: '2rem',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        background: 'rgba(16, 185, 129, 0.85)', // Greenish transparent
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        padding: '1rem 2rem',
+                        borderRadius: '50px',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+                        zIndex: 9999,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '1rem',
+                        animation: 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+                    }}>
+                        <div style={{
+                            background: 'rgba(255, 255, 255, 0.25)',
+                            borderRadius: '50%',
+                            padding: '6px',
+                            display: 'flex',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                        }}>
+                            <Printer size={20} color="#fff" strokeWidth={2.5} />
+                        </div>
+                        <span style={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem', letterSpacing: '0.01em' }}>
+                            Downloaded {lead.name}'s Profile
+                        </span>
+                    </div>
+                )
+            }
         </div >
     );
 };
