@@ -5,10 +5,10 @@ const Settings = () => {
         <div style={{
             position: 'fixed',
             top: 0,
-            left: 0,
-            width: '100vw',
-            height: '100vh',
-            zIndex: 9999,
+            left: 'var(--sidebar-width, 280px)',
+            right: 0,
+            bottom: 0,
+            zIndex: 100,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -21,7 +21,7 @@ const Settings = () => {
                 style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover' // Changed from contain to cover
+                    objectFit: 'cover'
                 }}
             />
         </div>
