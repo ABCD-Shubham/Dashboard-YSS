@@ -275,33 +275,10 @@ const Dashboard = () => {
         maintainAspectRatio: false,
         plugins: {
             legend: {
-                position: 'top',
-                align: 'end',
-                labels: {
-                    usePointStyle: true,
-                    boxWidth: 8,
-                    padding: 20,
-                    color: '#64748b',
-                    font: {
-                        family: "'Outfit', sans-serif",
-                        size: 12,
-                        weight: 500
-                    }
-                },
+                display: false
             },
             title: {
-                display: true,
-                text: 'Audience Growth',
-                align: 'start',
-                font: {
-                    family: "'Outfit', sans-serif",
-                    size: 18,
-                    weight: '600',
-                },
-                padding: {
-                    bottom: 30,
-                },
-                color: '#1e293b'
+                display: false
             },
             tooltip: {
                 backgroundColor: 'rgba(255, 255, 255, 0.95)',
@@ -377,8 +354,31 @@ const Dashboard = () => {
             </div>
 
             {/* Main Chart Area - Audience Growth */}
-            <div className="card" style={{ height: '400px', marginBottom: '1.5rem' }}>
-                <Line options={lineChartOptions} data={socialGrowthData} />
+            <div className="card" style={{ padding: '1.5rem', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: '#1e293b', margin: 0 }}>Audience Growth</h3>
+                    <div style={{ display: 'flex', gap: '1.5rem' }}>
+                        {[
+                            { label: 'Instagram', color: '#E1306C' },
+                            { label: 'LinkedIn', color: '#0077B5' },
+                            { label: 'TikTok', color: '#000000' }
+                        ].map(item => (
+                            <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <div style={{
+                                    width: '8px',
+                                    height: '8px',
+                                    borderRadius: '50%',
+                                    backgroundColor: item.color,
+                                    border: '1px solid rgba(0,0,0,0.1)' // Subtle border for definition
+                                }}></div>
+                                <span style={{ fontSize: '0.8rem', fontWeight: 500, color: '#64748b', lineHeight: 1 }}>{item.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div style={{ height: '350px' }}>
+                    <Line options={lineChartOptions} data={socialGrowthData} />
+                </div>
             </div>
 
             <div className="dashboard-grid" style={{ marginTop: 0 }}>
