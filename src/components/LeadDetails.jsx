@@ -138,34 +138,21 @@ const LeadDetails = () => {
 
     return (
         <div className="lead-details-page" style={{ background: 'var(--bg-body)', minHeight: '100vh', width: '100%' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <button
-                        onClick={() => navigate('/leads')}
-                        className="btn"
-                        style={{ padding: 0, color: 'var(--text-muted)', background: 'transparent' }}
-                    >
-                        <ArrowLeft size={20} />
-                    </button>
-                    <h2 style={{ fontSize: '1.25rem', margin: 0 }}>Lead Profile</h2>
-                </div>
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <button className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Printer size={18} color="var(--text-muted)" /></button>
-                    <button className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Settings size={18} color="var(--text-muted)" /></button>
-                </div>
-            </div>
+
 
             <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '1.5rem', alignItems: 'start' }}>
 
                 {/* Left Sidebar - Profile Card */}
-                <div className="card" style={{ 
-                    padding: '0', 
-                    overflow: 'hidden', 
-                    background: 'transparent', 
-                    border: '1px solid rgba(255, 255, 255, 0.2)', 
+                <div className="card" style={{
+                    padding: '0',
+                    overflowY: 'auto',
+                    maxHeight: 'calc(100vh - 4rem)',
+                    background: 'transparent',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
                     boxShadow: 'none',
                     position: 'sticky',
-                    top: '2rem'
+                    top: '2rem',
+                    scrollbarWidth: 'none'
                 }}>
                     <div style={{ padding: '2rem', textAlign: 'center', borderBottom: '1px solid var(--border-color)' }}>
                         <div style={{ position: 'relative', display: 'inline-block', marginBottom: '1rem' }}>
@@ -280,6 +267,23 @@ const LeadDetails = () => {
 
                 {/* Right Content Area */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    {/* Header moved here */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                            <button
+                                onClick={() => navigate('/leads')}
+                                className="btn"
+                                style={{ padding: 0, color: 'var(--text-muted)', background: 'transparent' }}
+                            >
+                                <ArrowLeft size={20} />
+                            </button>
+                            <h2 style={{ fontSize: '1.25rem', margin: 0 }}>Lead Profile</h2>
+                        </div>
+                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                            <button className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Printer size={18} color="var(--text-muted)" /></button>
+                            <button className="btn" style={{ background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '8px' }}><Settings size={18} color="var(--text-muted)" /></button>
+                        </div>
+                    </div>
 
                     {/* Top Chart Section */}
                     <div className="card" style={{ height: '400px', display: 'flex', flexDirection: 'column', background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', boxShadow: 'none' }}>
