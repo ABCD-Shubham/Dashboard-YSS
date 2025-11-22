@@ -25,6 +25,24 @@ YSS Analytics Dashboard is a comprehensive web application designed to help busi
 
 The dashboard features a sleek, responsive interface with a custom "Midnight Electric" theme that adapts seamlessly between light and dark modes, ensuring optimal viewing experience in any environment.
 
+## 📸 Screenshots
+
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="public/screenshots/dashboard-1.png" alt="Dashboard Overview" width="400"/></td>
+      <td><img src="public/screenshots/dashboard-2.png" alt="Dashboard Charts" width="400"/></td>
+      <td><img src="public/screenshots/leads.png" alt="Leads Management" width="400"/></td>
+      <td><img src="public/screenshots/lead-profile-1.png" alt="Lead Profile" width="400"/></td>
+      <td><img src="public/screenshots/lead-profile-2.png" alt="Lead Details" width="400"/></td>
+      <td><img src="public/screenshots/coming-soon.png" alt="Coming Soon" width="400"/></td>
+    </tr>
+  </table>
+</div>
+
+> 💡 **Note**: Scroll horizontally to view all screenshots. The last image shows upcoming features: Inbox & Settings pages coming soon! 🚀
+
+
 ## ✨ Features
 
 ### 📊 Analytics & Insights
