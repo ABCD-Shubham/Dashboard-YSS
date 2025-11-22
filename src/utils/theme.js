@@ -3,15 +3,15 @@ export const colorThemes = [
         id: 'default',
         name: 'Purple & White (Default)',
         colors: {
-            primary: '#8b5cf6',
-            primaryLight: '#a78bfa',
-            primaryDark: '#7c3aed',
-            background: '#f1f5f9',
+            primary: '#475569', // Slate 600
+            primaryLight: '#94a3b8', // Slate 400
+            primaryDark: '#334155', // Slate 700
+            background: '#F7F9FC', // Soft Cloud White
             backgroundDark: '#1a1625',
             cardBg: 'rgba(255, 255, 255, 0.9)',
             cardBgDark: 'rgba(42, 35, 60, 0.9)',
             textMain: '#0f172a',
-            textMainDark: '#64748b', // Darker grey text
+            textMainDark: '#64748b',
             sidebarBg: 'rgba(255, 255, 255, 0.8)',
             sidebarBgDark: 'rgba(30, 25, 45, 0.95)'
         }

@@ -208,9 +208,9 @@ h3 {
 }
 
 .nav-item.active {
-  background: linear-gradient(to right, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05));
-  color: var(--primary);
-  font-weight: 600;
+  background: transparent;
+  color: #000000;
+  font-weight: 700;
 }
 
 .nav-icon {
