@@ -649,31 +649,40 @@ const LeadDetails = () => {
             {showNotification && (
                 <div style={{
                     position: 'fixed',
-                    bottom: '2rem',
-                    right: '2rem',
+                    bottom: '2.5rem',
+                    right: '2.5rem',
                     background: '#000000',
                     color: '#ffffff',
-                    padding: '12px 24px',
-                    borderRadius: '50px',
-                    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
+                    padding: '14px 28px',
+                    borderRadius: '100px',
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
                     zIndex: 9999,
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '12px',
-                    animation: 'fadeIn 0.3s ease-out',
-                    border: '1px solid rgba(255,255,255,0.1)'
+                    justifyContent: 'center',
+                    gap: '14px',
+                    animation: 'fadeIn 0.4s ease-out',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    backdropFilter: 'blur(10px)'
                 }}>
                     <div style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        background: 'rgba(74, 222, 128, 0.15)',
+                        background: 'rgba(74, 222, 128, 0.2)',
                         borderRadius: '50%',
-                        padding: '4px'
+                        padding: '4px',
+                        border: '1px solid rgba(74, 222, 128, 0.3)'
                     }}>
-                        <Check size={18} color="#4ade80" strokeWidth={3} />
+                        <Check size={16} color="#4ade80" strokeWidth={3} />
                     </div>
-                    <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>
+                    <span style={{
+                        fontSize: '0.95rem',
+                        fontWeight: 500,
+                        letterSpacing: '0.02em',
+                        lineHeight: 1,
+                        paddingTop: '2px' // Optical centering adjustment
+                    }}>
                         Downloaded {lead.name}'s Profile
                     </span>
                 </div>
