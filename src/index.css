@@ -1,10 +1,10 @@
 :root {
-  --primary: #8b5cf6;
-  /* Violet 500 - Slightly lighter for vibrancy */
-  --primary-light: #a78bfa;
-  /* Violet 400 */
-  --primary-dark: #7c3aed;
-  /* Violet 600 */
+  --primary: #475569;
+  /* Slate 600 - Grey theme */
+  --primary-light: #94a3b8;
+  /* Slate 400 */
+  --primary-dark: #334155;
+  /* Slate 700 */
   --bg-body: #F7F9FC;
   /* Slate 100 - Slightly darker for better contrast with white cards */
   --bg-card: rgba(255, 255, 255, 0.9);
@@ -267,7 +267,7 @@ h3 {
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
