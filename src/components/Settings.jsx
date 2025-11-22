@@ -14,14 +14,14 @@ const Settings = () => {
             justifyContent: 'center',
             padding: 0,
             margin: 0,
-            backgroundColor: '#E75A9D' // Pink background matching image
+            backgroundColor: '#d55593ff'  // Pink background matching image
         }}>
             <img
                 src="/screenshots/coming-soon.png"
                 alt="Inbox & Settings Coming Soon"
                 style={{
-                    width: '100%',
-                    height: '100%',
+                    width: '90%',
+                    height: '105%',
                     objectFit: 'contain'
                 }}
             />

@@ -341,7 +341,7 @@ const Dashboard = () => {
             <header className="top-header">
                 <div className="welcome-text">
                     <h1>Dashboard</h1>
-                    <p>Welcome back to YSS Analytics</p>
+                    <p>Welcome to YSS Analytics</p>
                 </div>
             </header>
 

@@ -42,8 +42,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  zoom: 0.9;
-  /* Default 90% zoom */
 }
 
 /* Hide scrollbar for all browsers while maintaining scroll functionality */
