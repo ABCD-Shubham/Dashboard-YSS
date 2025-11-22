@@ -1,0 +1,1 @@
+import{t as e}from"./index-DPrNGJhE.js";export default e();

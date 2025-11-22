@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1024px;
+            height: 640px;
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .container {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .text-content {
+            text-align: left;
+        }
+        h1 {
+            font-size: 72px;
+            font-weight: 800;
+            color: #334155;
+            margin: 0 0 20px 0;
+            letter-spacing: -2px;
+        }
+        h2 {
+            font-size: 48px;
+            font-weight: 600;
+            color: #64748b;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        .rocket {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-content">
+            <h1>Inbox & Settings</h1>
+            <h2>Coming Soon</h2>
+        </div>
+        <svg class="rocket" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Rocket body -->
+            <path d="M100 20 L120 100 L100 180 L80 100 Z" fill="#EC4899" stroke="#E1306C" stroke-width="2"/>
+            <!-- Rocket window -->
+            <circle cx="100" cy="80" r="15" fill="#4EA8FF" stroke="#2690E8" stroke-width="2"/>
+            <!-- Left fin -->
+            <path d="M80 120 L60 160 L80 140 Z" fill="#F59E0B" stroke="#D97706" stroke-width="2"/>
+            <!-- Right fin -->
+            <path d="M120 120 L140 160 L120 140 Z" fill="#F59E0B" stroke="#D97706" stroke-width="2"/>
+            <!-- Flame 1 -->
+            <path d="M90 180 L85 200 L95 190 Z" fill="#FF6B6B" opacity="0.8"/>
+            <!-- Flame 2 -->
+            <path d="M100 180 L95 205 L105 195 Z" fill="#FFD93D" opacity="0.8"/>
+            <!-- Flame 3 -->
+            <path d="M110 180 L105 200 L115 190 Z" fill="#FF6B6B" opacity="0.8"/>
+            <!-- Stars -->
+            <circle cx="40" cy="40" r="3" fill="#F59E0B"/>
+            <circle cx="160" cy="50" r="2" fill="#4EA8FF"/>
+            <circle cx="30" cy="100" r="2.5" fill="#EC4899"/>
+            <circle cx="170" cy="120" r="3" fill="#F59E0B"/>
+        </svg>
+    </div>
+</body>
+</html>
