@@ -5,7 +5,7 @@ import Dashboard from './components/Dashboard';
 import Leads from './components/Leads';
 import Settings from './components/Settings';
 import LeadDetails from './components/LeadDetails';
-import Profile from './components/Profile';
+import Inbox from './components/Inbox';
 import { applyTheme } from './utils/theme';
 
 const App = () => {
@@ -25,8 +25,8 @@ const App = () => {
             <Route path="/" element={<Dashboard />} />
             <Route path="/leads" element={<Leads />} />
             <Route path="/leads/:id" element={<LeadDetails />} />
+            <Route path="/inbox" element={<Inbox />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
       </div>
