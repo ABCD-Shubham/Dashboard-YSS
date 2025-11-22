@@ -185,6 +185,8 @@ h3 {
   align-items: flex-start;
   width: 48px;
   /* Match logo width */
+  gap: 0;
+  /* No gap between elements */
 }
 
 .logo-text {
@@ -199,14 +201,15 @@ h3 {
   transform: scaleX(1.3);
   /* Wider to reach edge */
   transform-origin: left;
-  margin-bottom: 2px;
+  margin-bottom: 0;
+  /* No gap */
   display: block;
   height: auto;
   width: 48px;
   /* Match logo width */
   margin-left: 0;
   /* Start at logo edge */
-  padding-top: 0;
+  padding: 0;
   margin-top: 0;
 }
 
@@ -222,7 +225,9 @@ h3 {
   /* Match logo width */
   text-align: right;
   /* Align to right edge */
-  margin-left: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
 .nav-list {
