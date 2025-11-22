@@ -158,7 +158,15 @@ const LeadDetails = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: '1.5rem', alignItems: 'start' }}>
 
                 {/* Left Sidebar - Profile Card */}
-                <div className="card" style={{ padding: '0', overflow: 'hidden', background: 'transparent', border: '1px solid rgba(255, 255, 255, 0.2)', boxShadow: 'none' }}>
+                <div className="card" style={{ 
+                    padding: '0', 
+                    overflow: 'hidden', 
+                    background: 'transparent', 
+                    border: '1px solid rgba(255, 255, 255, 0.2)', 
+                    boxShadow: 'none',
+                    position: 'sticky',
+                    top: '2rem'
+                }}>
                     <div style={{ padding: '2rem', textAlign: 'center', borderBottom: '1px solid var(--border-color)' }}>
                         <div style={{ position: 'relative', display: 'inline-block', marginBottom: '1rem' }}>
                             <div style={{
