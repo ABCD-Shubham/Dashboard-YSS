@@ -410,7 +410,7 @@ const LeadDetails = () => {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                             <h3 style={{ fontSize: '1.1rem' }}>Engagement Efficiency</h3>
                             <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                <button style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}><Printer size={18} color="var(--text-muted)" /></button>
+                                <button onClick={handleDownloadPDF} style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}><Printer size={18} color="var(--text-muted)" /></button>
                                 <button style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}><MoreHorizontal size={18} color="var(--text-muted)" /></button>
                             </div>
                         </div>
