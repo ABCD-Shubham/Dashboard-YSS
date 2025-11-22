@@ -1,8 +1,38 @@
+import React, { useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { useRef } from 'react';
+import { leadsData } from '../data/mockData';
+import {
+    ArrowLeft, Phone, Mail, MapPin, Calendar, Award,
+    MoreHorizontal, Settings, Printer, Edit2, User, Globe, Home,
+    TrendingUp, MessageCircle, Eye, ThumbsUp, Sparkles
+} from 'lucide-react';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    RadialLinearScale,
+} from 'chart.js';
+import { Bar, Line, Radar } from 'react-chartjs-2';
 
-// ... (existing imports)
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    PointElement,
+    LineElement,
+    RadialLinearScale,
+    Title,
+    Tooltip,
+    Legend
+);
 
 const LeadDetails = () => {
     const { id } = useParams();
@@ -10,7 +40,104 @@ const LeadDetails = () => {
     const lead = leadsData.find(l => l.id === parseInt(id));
     const printRef = useRef();
 
-    // ... (existing stats and chart data)
+    if (!lead) return <div>Lead not found</div>;
+
+    // Default stats if not present in mock data
+    const stats = lead.stats || {
+        likes: [12, 19, 3, 5, 2, 3, 9],
+        comments: [2, 3, 20, 5, 1, 4, 2],
+        views: [35, 40, 55, 60, 45, 50, 65]
+    };
+
+    // Main Vertical Bar Chart (Sales Efficiency Style)
+    const mainChartData = {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [
+            {
+                label: 'Views',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                backgroundColor: '#3b82f6', // Blue
+                borderRadius: 4,
+                barPercentage: 0.5,
+            },
+            {
+                label: 'Engagements',
+                data: [28, 48, 40, 19, 86, 27, 90],
+                backgroundColor: '#facc15', // Yellow
+                borderRadius: 4,
+                barPercentage: 0.5,
+            },
+            {
+                label: 'Points',
+                data: [45, 25, 60, 45, 30, 70, 55],
+                backgroundColor: '#ec4899', // Pink
+                borderRadius: 4,
+                barPercentage: 0.5,
+            },
+        ],
+    };
+
+    const mainChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false }, // Hide legend to match design
+            tooltip: {
+                backgroundColor: '#1e293b',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                padding: 12,
+                cornerRadius: 8,
+                displayColors: false,
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: '#f1f5f9',
+                    drawBorder: false,
+                },
+                ticks: {
+                    color: '#94a3b8',
+                    font: { family: "'Outfit', sans-serif", size: 11 }
+                },
+                border: { display: false }
+            },
+            x: {
+                grid: { display: false },
+                ticks: {
+                    color: '#64748b',
+                    font: { family: "'Outfit', sans-serif", size: 11 }
+                },
+                border: { display: false }
+            },
+        },
+    };
+
+    // Mini Line Charts Configuration
+    const createMiniChartData = (data, color) => ({
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        datasets: [{
+            data: data,
+            borderColor: color,
+            borderWidth: 2,
+            tension: 0.4,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+        }]
+    });
+
+    const miniChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+        scales: {
+            x: { display: false },
+            y: { display: false, min: 0 }
+        },
+        layout: { padding: 5 }
+    };
 
     const handleDownloadPDF = async () => {
         const element = printRef.current;
